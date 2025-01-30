@@ -1,0 +1,10 @@
+langchain
+langchain_openai
+pandas
+plotly
+dash
+dash-ag-grid
+python-dotenv
+sckit-learn
+numpy
+openai
