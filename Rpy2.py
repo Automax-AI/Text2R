@@ -220,7 +220,7 @@ def create_visualization(df, user_input, chat_history):
                 # Then explicitly save it as PNG
                 ro.r(f'''
                 # Save the plot directly to a PNG file
-                ggsave("{plot_path}", plot = p, width = 10, height = 6, dpi = 300)
+                ggsave("{plot_path}", plot = p, width = 6, height = 4, dpi = 300)
                 ''')
                 
                 # Verify the file was created
@@ -659,11 +659,15 @@ def main():
                 
                 if image_data:
                     if content_type == "image/png":
-                        st.image(
-                            f"data:image/png;base64,{image_data}",
-                            use_container_width=True,
-                            output_format="PNG"
-                        )
+                        # Create a container with constrained width for the image
+                        col1, col2, col3 = st.columns([1, 3, 1])
+                        with col2:
+                            # Display the image in the middle column (2/4 of the page width)
+                            st.image(
+                                f"data:image/png;base64,{image_data}",
+                                use_container_width=True,  # Still true but for a narrower container
+                                output_format="PNG"
+                            )
                     elif content_type == "application/pdf":
                         st.download_button(
                             label="Download PDF",
