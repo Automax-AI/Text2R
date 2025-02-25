@@ -642,11 +642,12 @@ def main():
         st.write("### Data Preview")
         st.dataframe(df.head(), use_container_width=True)
         
-        # User input
+        # User input push
         user_input = st.text_area(
             "Enter your request here...",
             height=100,
             placeholder="What would you like to visualize?"
+
         )
         
         if st.button("Generate Visualization"):
