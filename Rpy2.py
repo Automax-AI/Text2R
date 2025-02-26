@@ -509,7 +509,13 @@ def initialize_supabase_tables():
         st.error(f"Error connecting to Supabase: {str(e)}")
 
 def main():
-    st.set_page_config(page_title="Automax AI Market Conditions Tool", layout="wide")
+    st.set_page_config(
+        page_title="VisualizeR", 
+        page_icon="📊", 
+        layout="wide",
+        initial_sidebar_state="expanded",
+        menu_items=None  # Hide hamburger menu
+    )    
     
     initialize_supabase_tables()
     
@@ -518,9 +524,9 @@ def main():
     is_authenticated = setup_authentication()
     
     if not is_authenticated:
-        st.title("Welcome to Automax AI Market Conditions Tool")
+        st.title("Welcome to VisualizeR")
         st.write("""
-        This powerful tool helps you analyze market conditions using AI and R visualization.
+        This powerful tool helps you analyze data through R visualizations.
         Please login or register to get started.
         """)
         return
@@ -532,7 +538,8 @@ def main():
     with col1:
         st.image('assets/automax-logo.png', width=100)
     with col2:
-        st.title("Automax AI Market Conditions Tool")
+        st.title("VisualizeR")
+        st.write("Transform your data into powerful R visualizations")
     with col3:
         st.write(f"Welcome, {user['name']}")
         if st.button("Logout"):
